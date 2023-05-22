@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Arvore de Natal</title>
+  <style>
+    .arvore {
+      text-align: center;
+    }
+
+    .galhoNovo {
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="arvore1" class="arvore"></div>
+
+  <script>
+    function novaArvore(n, divId) {
+      let tamanho = n + 1;
+
+      let divArvore = document.getElementById(divId);
+
+      let linhasNovas = [];
+      for (let i = 1; i <= tamanho; i++) {
+        let linhaNova = "";
+        let espacosEmBranco = " ".repeat(tamanho - i);
+        let galhoNovo = String.fromCharCode(96 + i);
+
+        if (i === 1) {
+          linhaNova += espacosEmBranco + galhoNovo + espacosEmBranco;
+        } else {
+          let ramos = "*".repeat(i * 2 - 3);
+          linhaNova += espacosEmBranco + galhoNovo + ramos + galhoNovo + espacosEmBranco;
+        }
+
+        linhasNovas.push(linhaNova);
+      }
+
+      divArvore.innerHTML = linhasNovas.join("<br>");
+    }
+    novaArvore(27, "arvore1");
+  </script>
+</body>
+</html>
